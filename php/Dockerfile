@@ -15,11 +15,13 @@ RUN apt-get update && apt-get install -y \
 # Установка Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy existing application directory contents to the working directory
-COPY ./ /var/www/html
-
 # Assign permissions of the working directory to the www-data user
 RUN usermod -u 1000 www-data
+
+USER www-data
+
+# Copy existing application directory contents to the working directory
+COPY ./ /var/www/html
 
 # Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
 EXPOSE 9000
