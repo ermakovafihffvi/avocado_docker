@@ -1,6 +1,9 @@
 # php/Dockerfile
 FROM php:8.2-fpm
 
+#for tinker
+RUN chown -R www-data:www-data /var/www
+
 # Copy composer.lock and composer.json into the working directory
 COPY composer.lock composer.json /var/www/html/
 

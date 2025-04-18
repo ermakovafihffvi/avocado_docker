@@ -40,8 +40,10 @@ services:
       MYSQL_PASSWORD: password
     volumes:
       - mysql-data:/var/lib/mysql
-    expose:
-      - "3306"
+    #expose: //prod
+    #  - "3306"
+    ports: #//dev
+      - "3306:3306"
     networks:
         service_net:
             ipv4_address: 172.28.4.2
