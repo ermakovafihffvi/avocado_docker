@@ -12,8 +12,10 @@ WORKDIR /var/www/html/
 
 # Установка зависимостей
 RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip curl \
+    libzip-dev zip unzip curl nano sudo cron rsyslog\
     && docker-php-ext-install pdo pdo_mysql zip
+
+RUN service cron start
 
 # Установка Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
