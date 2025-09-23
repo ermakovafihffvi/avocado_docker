@@ -26,7 +26,7 @@ RUN usermod -u 1000 www-data
 USER www-data
 
 # Copy existing application directory contents to the working directory
-COPY ./ /var/www/html
+COPY --chown=www-data:www-data ./ /var/www/html
 
 # Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
 EXPOSE 9000
