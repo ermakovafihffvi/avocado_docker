@@ -12,7 +12,7 @@ WORKDIR /var/www/html/
 
 # Установка зависимостей
 RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip curl nano sudo cron rsyslog\
+    libzip-dev zip unzip curl nano sudo cron rsyslog netcat-traditional \
     && docker-php-ext-install pdo pdo_mysql zip
 
 RUN service cron start
